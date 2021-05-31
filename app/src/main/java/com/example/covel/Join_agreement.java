@@ -48,7 +48,7 @@ public class Join_agreement extends AppCompatActivity {
                 Intent intent=new Intent(getApplicationContext(),Join_membership.class);
                 startActivity(intent);
             }
-        });//btnAgree, 에러 뜨는 이유는 아직 회원가입 페이지 만들어지지 않음.
+        });//btnAgree
 
         imgNextButton1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +128,7 @@ public class Join_agreement extends AppCompatActivity {
                 else if(chBAge.isChecked() && chBService.isChecked() && chBProvision.isChecked()
                 && chBCollection.isChecked()){
                     chBAll.setChecked(true);
-                }// 각 체크박스 체크 여부를 확인하여 전테동의 체크박스 변경
+                }// 각 체크박스 체크 여부를 확인하여 전체동의 체크박스 변경
             }
         });//chBAge
         chBService.setOnClickListener(new View.OnClickListener() {
@@ -140,7 +140,7 @@ public class Join_agreement extends AppCompatActivity {
                 else if(chBAge.isChecked() && chBService.isChecked() && chBProvision.isChecked()
                         && chBCollection.isChecked()){
                     chBAll.setChecked(true);
-                }// 각 체크박스 체크 여부를 확인하여 전테동의 체크박스 변경
+                }// 각 체크박스 체크 여부를 확인하여 전체동의 체크박스 변경
             }
         });//chBService
         chBCollection.setOnClickListener(new View.OnClickListener() {
@@ -152,7 +152,7 @@ public class Join_agreement extends AppCompatActivity {
                 else if(chBAge.isChecked() && chBService.isChecked() && chBProvision.isChecked()
                         && chBCollection.isChecked()){
                     chBAll.setChecked(true);
-                }// 각 체크박스 체크 여부를 확인하여 전테동의 체크박스 변경
+                }// 각 체크박스 체크 여부를 확인하여 전체동의 체크박스 변경
             }
         });//chBCollection
         chBProvision.setOnClickListener(new View.OnClickListener() {
@@ -164,7 +164,7 @@ public class Join_agreement extends AppCompatActivity {
                 else if(chBAge.isChecked() && chBService.isChecked() && chBProvision.isChecked()
                         && chBCollection.isChecked()){
                     chBAll.setChecked(true);
-                }// 각 체크박스 체크 여부를 확인하여 전테동의 체크박스 변경
+                }// 각 체크박스 체크 여부를 확인하여 전체동의 체크박스 변경
             }
         });//chBProvision
     }//onCreate

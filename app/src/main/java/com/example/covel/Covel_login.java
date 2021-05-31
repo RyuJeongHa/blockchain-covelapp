@@ -27,7 +27,7 @@ public class Covel_login extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),Covel_home.class);
                 startActivity(intent);
             }
-        });//btnLogin 에러 뜨는 이유는 아직 홈 화면이 만들어지지 않음
+        });//btnLogin DB 추가 안한 상태
 
         btnTerms.setOnClickListener(new View.OnClickListener() {
             @Override

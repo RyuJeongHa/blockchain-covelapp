@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Join_agreement"/>
+        <activity android:name=".Join_membership"/>
     </application>
 
 </manifest>
