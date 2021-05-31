@@ -28,14 +28,16 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40sp"
+            android:layout_marginTop="20sp"
             android:text="코블"
             android:textSize="23dp"
             android:textStyle="bold"
@@ -43,7 +45,7 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40sp"
+                android:layout_marginTop="20sp"
                 android:text=" 계정"
                 android:textSize="23dp"
                 android:textColor="#000000"/>
@@ -56,8 +58,7 @@
             android:textColor="#000000"/>
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_height="wrap_content">
             <CheckBox
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -93,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp">
         <CheckBox
             android:id="@+id/chBAge"
