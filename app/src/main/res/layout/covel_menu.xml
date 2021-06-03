@@ -32,22 +32,104 @@
         android:background="@drawable/outline"/>
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="6dp"
             android:layout_marginRight="8dp"
             android:src="@drawable/myname"/>
         <TextView
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:text="내 정보"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="8dp"
+            android:textColor="#000000"
+            android:textSize="27dp"/>
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="내 정보"
-            android:layout_marginTop="15dp"
-            android:textSize="35dp"/>
-
+            android:layout_marginTop="18dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/plus" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp">
+        <ImageView
+            android:layout_width="51dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="11.3dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/upload"/>
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:text="회차 업로드"
+            android:layout_gravity="right"
+            android:layout_marginTop="17dp"
+            android:layout_marginLeft="8dp"
+            android:textColor="#000000"
+            android:textSize="27dp"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_gravity="right"
+            android:background="@android:color/transparent"
+            android:src="@drawable/plus" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10.2dp"
+            android:layout_marginLeft="11.3dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/plus_2"/>
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:text="소설 등록"
+            android:layout_gravity="right"
+            android:layout_marginTop="17dp"
+            android:layout_marginLeft="8dp"
+            android:textColor="#000000"
+            android:textSize="27dp"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="@android:color/transparent"
+            android:layout_gravity="right"
+            android:src="@drawable/plus" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="end"
+        android:text="로그아웃"
+        android:background="@drawable/login_button_border"
+        android:layout_marginTop="200dp"
+        android:textSize="18sp"/>
 
 </LinearLayout>
