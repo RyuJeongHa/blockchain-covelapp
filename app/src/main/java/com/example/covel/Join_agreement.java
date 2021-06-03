@@ -59,9 +59,8 @@ public class Join_agreement extends AppCompatActivity {
                 builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(Join_agreement.this,"확인 버튼을 눌렀습니다.",
-                                Toast.LENGTH_SHORT).show();
-                    }// 토스트 메시지
+
+                    }
                 });//확인 버튼
                 builder.show();
             }
@@ -76,9 +75,8 @@ public class Join_agreement extends AppCompatActivity {
                 builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(Join_agreement.this,"확인 버튼을 눌렀습니다.",
-                                Toast.LENGTH_SHORT).show();
-                    }// 토스트 메시지
+
+                    }
                 });//확인 버튼
                 builder.show();
             }
@@ -93,9 +91,8 @@ public class Join_agreement extends AppCompatActivity {
                 builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(Join_agreement.this,"확인 버튼을 눌렀습니다.",
-                                Toast.LENGTH_SHORT).show();
-                    }// 토스트 메시지
+
+                    }
                 });//확인 버튼
                 builder.show();
             }

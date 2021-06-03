@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".Join_agreement"/>
         <activity android:name=".Join_membership"/>
+        <activity android:name=".Covel_home"/>
+        <activity android:name=".Covel_menu"/>
     </application>
 
 </manifest>
