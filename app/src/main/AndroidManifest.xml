@@ -25,6 +25,7 @@
         <activity android:name=".Covel_home"/>
         <activity android:name=".Covel_menu"/>
         <activity android:name=".My_information"/>
+        <activity android:name=".Novel_upload"/>
     </application>
 
 </manifest>

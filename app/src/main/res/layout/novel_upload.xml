@@ -14,7 +14,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp">
         <ImageButton
-            android:id="@+id/imgBackBtn4"
+            android:id="@+id/imgBackBtn5"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@android:color/transparent"
@@ -32,15 +32,90 @@
             android:textSize="35sp" />
         </LinearLayout>
     </FrameLayout>
-    <EditText
-        android:id="@+id/memId"
+    <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/upload_title"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:hint="  제목, 회차 넘버링"
+                android:background="@drawable/login_border"
+                android:inputType="textCapWords"/>
+            <TextView
+                android:id="@+id/findNovelTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:gravity="right"
+                android:lineSpacingMultiplier="0.8"
+                android:text="@string/find_novel"
+                android:textColor="#000000"/>
+        </LinearLayout>
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:hint="  제목, 넘버링"
-        android:background="@drawable/login_border"
-        android:inputType="textCapWords"/>
-
+        android:layout_marginTop="15dp">
+        <EditText
+            android:id="@+id/write_novel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:hint=" 소설 내용 추가"
+            android:lines="15"
+            android:textColor="#000000"
+            android:background="@drawable/login_border"/>
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right">
+            <EditText
+                android:id="@+id/file_name"
+                android:layout_width="255dp"
+                android:layout_height="25dp"
+                android:hint=" 첨부파일 이름"
+                android:layout_marginRight="23.5dp"
+                android:textColor="#000000"
+                android:background="@drawable/login_border"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:src="@drawable/file_icon"/>
+            <TextView
+                android:id="@+id/attached_file"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="0.8"
+                android:text="@string/attachedFile"
+                android:textColor="#000000"/>
+        </LinearLayout>
+    </FrameLayout>
+    <Button
+        android:id="@+id/btnUpload"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:background="@drawable/login_button_border"
+        android:text="업로드"
+        android:textSize="17dp"/>
 
 </LinearLayout>
