@@ -9,15 +9,15 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class JoinVerificationRequest extends StringRequest {
-
-    final static private String URL = "http://covel.dothome.co.kr/JoinVerification.php";
+public class MyInfoRequest extends StringRequest {
+    final static private String URL = "http://covel.dothome.co.kr/MyInfo.php";
     private Map<String, String> map;
 
-    public JoinVerificationRequest(String nickname, Response.Listener<String> listener) {
+    public MyInfoRequest(int id, String nickname, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);
 
         map = new HashMap<>();
+        map.put("id", String.valueOf(id));
         map.put("nickname", nickname);
     }
 

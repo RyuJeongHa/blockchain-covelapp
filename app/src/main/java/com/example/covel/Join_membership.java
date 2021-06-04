@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -18,7 +17,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.covel.request.JoinRequest;
-import com.example.covel.request.JoinVerificationRequest;
+import com.example.covel.request.NicknameVerificationRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,7 +26,7 @@ public class Join_membership extends AppCompatActivity {
     ImageButton imgBackBtn2;
     EditText memId, memPw, memRePw, memNick, memName, memRe1, memRe2;
     Button btnVerification, btnSignUp;
-    boolean isVerify = false;
+    private boolean isVerify = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,6 +72,7 @@ public class Join_membership extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "사용하실 수 있는 닉네임입니다.", Toast.LENGTH_SHORT).show();
                                 isVerify = true;
                             } else {
+                                Toast.makeText(getApplicationContext(), "사용하실 수 없는 닉네임입니다.", Toast.LENGTH_SHORT).show();
                                 isVerify = false;
                                 return;
                             }
@@ -82,9 +82,9 @@ public class Join_membership extends AppCompatActivity {
                     }
                 };
                 // 서버로 Volley 이용해서 요청
-                JoinVerificationRequest joinVerificationRequest = new JoinVerificationRequest(nickname, responseListener);
+                NicknameVerificationRequest nicknameVerificationRequest = new NicknameVerificationRequest(nickname, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(Join_membership.this);
-                queue.add(joinVerificationRequest);
+                queue.add(nicknameVerificationRequest);
             }//btnVerification-onClick
         });//btnVerification
 

@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-import com.example.covel.request.JoinRequest;
+import com.example.covel.preferences.AppPreferences;
 import com.example.covel.request.LoginRequest;
 
 import org.json.JSONException;
@@ -46,20 +46,34 @@ public class Covel_login extends AppCompatActivity {
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        JSONObject jsonObject = null;
                         try {
-                            jsonObject = new JSONObject(response);
+                            JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
 
                             if(success) { // 로그인 성공
+                                int id = jsonObject.getInt("id");
                                 String userId = jsonObject.getString("userId");
                                 String password = jsonObject.getString("password");
+                                String nickname = jsonObject.getString("nickname");
+                                String name = jsonObject.getString("name");
+                                String rgnumber1 = jsonObject.getString("rgnumber1");
+                                String rgnumber2 = jsonObject.getString("rgnumber2");
+
                                 Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
 
+                                AppPreferences.setUserLoggedIn(getApplicationContext(), true);
+                                AppPreferences.setId(getApplicationContext(), id);
+                                AppPreferences.setUserId(getApplicationContext(), userId);
+                                AppPreferences.setPassword(getApplicationContext(), password);
+                                AppPreferences.setNickname(getApplicationContext(), nickname);
+                                AppPreferences.setName(getApplicationContext(), name);
+                                AppPreferences.setRgnumber1(getApplicationContext(), rgnumber1);
+                                AppPreferences.setRgnumber2(getApplicationContext(), rgnumber2);
+
                                 Intent intent = new Intent(getApplicationContext(),Covel_home.class);
-                                intent.putExtra("userId", userId);
-                                intent.putExtra("password", password);
                                 startActivity(intent);
+
+                                finish();
                             } else { // 로그인 실패
                                 Toast.makeText(getApplicationContext(), "등록되지 않은 회원이거나, 비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
                                 return;

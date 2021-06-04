@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.covel.preferences.AppPreferences;
+
 public class Covel_menu extends AppCompatActivity {
     ImageButton imgBackBtn3, plus1, plus2, plus3;
     Button btnLogout;
@@ -61,6 +63,11 @@ public class Covel_menu extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),Covel_login.class);
                 startActivity(intent);
+
+                AppPreferences.setUserLoggedIn(getApplicationContext(), false);
+                AppPreferences.remove();
+
+                finish();
             }
         });//btnLogout
 
