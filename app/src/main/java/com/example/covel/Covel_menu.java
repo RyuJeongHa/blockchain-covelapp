@@ -38,7 +38,7 @@ public class Covel_menu extends AppCompatActivity {
                 Intent intent=new Intent(getApplicationContext(),My_information.class);
                 startActivity(intent);
             }
-        });//plus2
+        });//plus1
 
         plus2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +46,7 @@ public class Covel_menu extends AppCompatActivity {
                 Intent intent=new Intent(getApplicationContext(),Novel_upload.class);
                 startActivity(intent);
             }
-        });//plus1
+        });//plus2
 
         plus3.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -14,7 +14,7 @@
         android:layout_width="89dp"
         android:layout_height="91dp"
         android:background="#FFFFFF"
-        android:src="@drawable/main_logo" />
+        android:src="@drawable/main_logo2" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
