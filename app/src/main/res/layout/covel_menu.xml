@@ -32,104 +32,122 @@
         android:layout_height="wrap_content"
         android:background="@drawable/outline"/>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp">
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="8dp"
-            android:src="@drawable/myname"/>
-        <TextView
-            android:layout_width="200dp"
-            android:layout_height="45dp"
-            android:text="내 정보"
-            android:layout_marginTop="18dp"
-            android:layout_marginLeft="8dp"
-            android:textColor="#000000"
-            android:textSize="27dp"/>
-        <ImageButton
-            android:id="@+id/plus1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/plus" />
-    </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="80dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp">
-        <ImageView
-            android:layout_width="51dp"
-            android:layout_height="51dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="11.3dp"
-            android:layout_marginRight="8dp"
-            android:src="@drawable/upload"/>
-        <TextView
-            android:layout_width="200dp"
-            android:layout_height="45dp"
-            android:text="회차 업로드"
-            android:layout_marginTop="17dp"
-            android:layout_marginLeft="8dp"
-            android:textColor="#000000"
-            android:textSize="27dp"/>
-        <ImageButton
-            android:id="@+id/plus2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:layout_marginLeft="3dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/plus" />
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:orientation="vertical">
+
+        <!-- 내정보-->
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="90dp">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/myname" />
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:text="내 정보"
+                android:textColor="#000000"
+                android:textSize="27dp" />
+
+            <ImageButton
+                android:id="@+id/plus1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="20dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/plus" />
+        </FrameLayout>
+
+        <!-- 회원정보 -->
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="90dp">
+
+            <ImageView
+                android:layout_width="51dp"
+                android:layout_height="51dp"
+                android:layout_marginLeft="11.3dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/upload" />
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:text="회차 업로드"
+                android:textColor="#000000"
+                android:textSize="27dp" />
+
+            <ImageButton
+                android:id="@+id/plus2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="20dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/plus" />
+        </FrameLayout>
+
+
+        <!-- 소설등록 -->
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="90dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="11.3dp"
+                android:layout_marginTop="13.5dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/plus_2" />
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:text="소설 등록"
+                android:textColor="#000000"
+                android:textSize="27dp" />
+
+            <ImageButton
+                android:id="@+id/plus3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="20dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/plus" />
+        </FrameLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="80dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp">
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="10.2dp"
-            android:layout_marginLeft="11.3dp"
-            android:layout_marginRight="8dp"
-            android:src="@drawable/plus_2"/>
-        <TextView
-            android:layout_width="200dp"
-            android:layout_height="45dp"
-            android:text="소설 등록"
-            android:layout_marginTop="17dp"
-            android:layout_marginLeft="8dp"
-            android:textColor="#000000"
-            android:textSize="27dp"/>
-        <ImageButton
-            android:id="@+id/plus3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:layout_marginLeft="4.5dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/plus" />
-    </LinearLayout>
 
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="end"
-        android:text="로그아웃"
-        android:background="@drawable/login_button_border"
-        android:layout_marginTop="170dp"
-        android:textSize="18sp"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:layout_margin="25dp"
+            android:background="@drawable/login_button_border"
+            android:gravity="center"
+            android:text="로그아웃"
+            android:textSize="18sp" />
+    </FrameLayout>
 
 </LinearLayout>
