@@ -10,27 +10,40 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <ImageButton
-            android:id="@+id/imgBackBtn3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/backbutton" />
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="COVEL"
-            android:textColor="#FFC0CB"
-            android:textSize="35sp"/>
-    </LinearLayout>
+        android:layout_height="50dp">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/outline"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/imgBackBtn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/backbutton" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="COVEL"
+                android:layout_marginRight="10dp"
+                android:includeFontPadding="false"
+                android:textColor="#FFC0CB"
+                android:textSize="35dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/outline" />
+
+
+        </FrameLayout>
+
+    </LinearLayout>
 
 
     <LinearLayout

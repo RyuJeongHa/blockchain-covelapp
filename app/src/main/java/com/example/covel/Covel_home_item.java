@@ -1,10 +1,13 @@
 package com.example.covel;
 
+import android.os.Bundle;
+import android.widget.ImageView;
+
 public class Covel_home_item {
-    private int novel_cover;
-    private String novel_name;
-    private String novelist_name;
-    private String novel_explain;
+    public int novel_cover;
+    public String novel_name;
+    public String novelist_name;
+    public String novel_explain;
 
 
     public void main_list(int novel_cover, String novel_name, String novelist_name, String novel_explain){
@@ -13,6 +16,8 @@ public class Covel_home_item {
         this.novelist_name = novelist_name;
         this.novel_explain = novel_explain;
     }
+
+
 
     public int getNovel_cover() {
         return novel_cover;

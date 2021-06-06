@@ -13,4 +13,7 @@ public class BoardDTO {
     private String content;
     private String description;
     private int userId;
+
+    public BoardDTO(int id, String title, String content, String description, int userId) {
+    }
 }

@@ -21,8 +21,7 @@
         android:layout_toRightOf="@id/novel_cover"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:layout_marginLeft="5dp"
-        android:text="novel_name" />
+        android:layout_marginLeft="5dp" />
 
     <TextView
         android:id="@+id/novelist_name"
@@ -32,7 +31,6 @@
         android:includeFontPadding="false"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@id/novel_cover"
-        android:text="novelist_name"
         android:textSize="12dp" />
 
     <TextView
@@ -41,7 +39,6 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/novel_cover"
         android:layout_toRightOf="@id/novel_cover"
-        android:text="novel_explain"
         android:textSize="15dp"
         android:layout_marginLeft="5dp"/>
 
