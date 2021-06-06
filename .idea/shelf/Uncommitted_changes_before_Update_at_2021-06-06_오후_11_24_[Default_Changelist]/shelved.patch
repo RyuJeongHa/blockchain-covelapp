@@ -1,0 +1,424 @@
+Index: app/src/main/res/layout/covel_home.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#FFFFFF\"\r\n    android:padding=\"15dp\"\r\n    android:orientation=\"vertical\"\r\n    tools:context=\".Covel_home\">\r\n\r\n\r\n    <FrameLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"50dp\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_gravity=\"center\">\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"40dp\"\r\n                android:text=\"COVEL\"\r\n                android:layout_marginRight=\"10dp\"\r\n                android:includeFontPadding=\"false\"\r\n                android:textColor=\"#FFC0CB\"\r\n                android:textSize=\"35dp\"\r\n                android:layout_marginLeft=\"10dp\"\r\n                app:layout_constraintLeft_toRightOf=\"@+id/imageBackButton\" />\r\n\r\n        </LinearLayout>\r\n\r\n        <ImageButton\r\n            android:id=\"@+id/imageMenuButton\"\r\n            android:layout_width=\"36dp\"\r\n            android:layout_height=\"36dp\"\r\n            android:layout_gravity=\"right\"\r\n            android:layout_marginTop=\"3dp\"\r\n            android:layout_marginRight=\"3dp\"\r\n            android:background=\"@android:color/transparent\"\r\n            android:scaleType=\"fitXY\"\r\n            app:srcCompat=\"@drawable/menu\"\r\n            />\r\n\r\n        <TextView\r\n            android:layout_width=\"fill_parent\"\r\n            android:layout_height=\"5dp\"\r\n            android:layout_gravity=\"bottom\"\r\n            android:background=\"@drawable/outline\" />\r\n    </FrameLayout>\r\n\r\n    <androidx.recyclerview.widget.RecyclerView\r\n        android:id=\"@+id/main_list\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\" />\r\n\r\n\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/covel_home.xml b/app/src/main/res/layout/covel_home.xml
+--- a/app/src/main/res/layout/covel_home.xml	(revision 9d84a3c6d59c817ec96ba843ba8d40c2e779dad1)
++++ b/app/src/main/res/layout/covel_home.xml	(date 1622960767581)
+@@ -54,7 +54,7 @@
+     <androidx.recyclerview.widget.RecyclerView
+         android:id="@+id/main_list"
+         android:layout_width="match_parent"
+-        android:layout_height="match_parent" />
++        android:layout_height="wrap_content" />
+ 
+ 
+ </LinearLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/covel_home_item.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:padding=\"5dp\">\r\n\r\n\r\n    <ImageView\r\n        android:id=\"@+id/novel_cover\"\r\n        android:layout_width=\"60dp\"\r\n        android:layout_height=\"80dp\"\r\n        android:scaleType=\"fitXY\"\r\n        tools:srcCompat=\"@tools:sample/avatars\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/novel_name\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_toRightOf=\"@id/novel_cover\"\r\n        android:textSize=\"20dp\"\r\n        android:textStyle=\"bold\"\r\n        android:layout_marginLeft=\"5dp\"\r\n        android:text=\"novel_name\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/novelist_name\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_below=\"@id/novel_name\"\r\n        android:includeFontPadding=\"false\"\r\n        android:layout_marginLeft=\"5dp\"\r\n        android:layout_toRightOf=\"@id/novel_cover\"\r\n        android:text=\"novelist_name\"\r\n        android:textSize=\"12dp\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/novel_explain\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_alignBottom=\"@id/novel_cover\"\r\n        android:layout_toRightOf=\"@id/novel_cover\"\r\n        android:text=\"novel_explain\"\r\n        android:textSize=\"15dp\"\r\n        android:layout_marginLeft=\"5dp\"/>\r\n\r\n    </RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/covel_home_item.xml b/app/src/main/res/layout/covel_home_item.xml
+--- a/app/src/main/res/layout/covel_home_item.xml	(revision 9d84a3c6d59c817ec96ba843ba8d40c2e779dad1)
++++ b/app/src/main/res/layout/covel_home_item.xml	(date 1622961053278)
+@@ -21,8 +21,7 @@
+         android:layout_toRightOf="@id/novel_cover"
+         android:textSize="20dp"
+         android:textStyle="bold"
+-        android:layout_marginLeft="5dp"
+-        android:text="novel_name" />
++        android:layout_marginLeft="5dp" />
+ 
+     <TextView
+         android:id="@+id/novelist_name"
+@@ -32,7 +31,6 @@
+         android:includeFontPadding="false"
+         android:layout_marginLeft="5dp"
+         android:layout_toRightOf="@id/novel_cover"
+-        android:text="novelist_name"
+         android:textSize="12dp" />
+ 
+     <TextView
+@@ -41,8 +39,7 @@
+         android:layout_height="wrap_content"
+         android:layout_alignBottom="@id/novel_cover"
+         android:layout_toRightOf="@id/novel_cover"
+-        android:text="novel_explain"
+         android:textSize="15dp"
+         android:layout_marginLeft="5dp"/>
+ 
+-    </RelativeLayout>
+\ No newline at end of file
++    </RelativeLayout>
+Index: app/src/main/java/com/example/covel/Covel_home.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.covel;\r\n\r\nimport androidx.annotation.Nullable;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.recyclerview.widget.LinearLayoutManager;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.ImageButton;\r\nimport android.widget.Toast;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class Covel_home extends AppCompatActivity {\r\n\r\n    ImageButton imageBackButton, imageMenuButton;\r\n    private ArrayList<Covel_home_item> arrayList;\r\n    private Covelhome_Recyclerviewadapter mainadapter;\r\n    private RecyclerView recyclerView;\r\n    protected RecyclerView.LayoutManager layoutManager;\r\n    private long backBtnTime = 0;\r\n\r\n    @Override\r\n    protected void onCreate(@Nullable Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.covel_home);\r\n\r\n        imageBackButton=(ImageButton)findViewById(R.id.imageBackButton);\r\n        imageMenuButton=(ImageButton)findViewById(R.id.imageMenuButton);\r\n        recyclerView = (RecyclerView) findViewById(R.id.main_list);\r\n        layoutManager = new LinearLayoutManager(this);\r\n        recyclerView.setLayoutManager(layoutManager);\r\n\r\n        arrayList = new ArrayList<>();\r\n\r\n        mainadapter = new Covelhome_Recyclerviewadapter(arrayList);\r\n        recyclerView.setAdapter(mainadapter);\r\n\r\n\r\n        //imageBackButton.setOnClickListener(new View.OnClickListener() {\r\n          //  @Override\r\n            //public void onClick(View view) {\r\n              //  Intent intent=new Intent(getApplicationContext(),Covel_login.class);\r\n                //startActivity(intent);\r\n            //}\r\n        //});//imageBackButton 클릭 시 로그인 화면으로 이동\r\n\r\n        imageMenuButton.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                Intent intent=new Intent(getApplicationContext(),Covel_menu.class);\r\n                startActivity(intent);\r\n            }\r\n        });//imageMenuButton\r\n    }\r\n\r\n    @Override\r\n    public void onBackPressed() { // 초기화면에서 1초 안에 뒤로가기 버튼 두번 클릭 시 앱 종료\r\n        long curTime = System.currentTimeMillis();\r\n        long gapTime = curTime - backBtnTime;\r\n\r\n        if(0 <= gapTime && gapTime <= 1000) {\r\n            super.onBackPressed();\r\n        } else {\r\n            backBtnTime = curTime;\r\n            Toast.makeText(getApplicationContext(), \"한번 더 누르면 종료됩니다.\", Toast.LENGTH_SHORT).show();\r\n        }\r\n    }//onBackPressed\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/covel/Covel_home.java b/app/src/main/java/com/example/covel/Covel_home.java
+--- a/app/src/main/java/com/example/covel/Covel_home.java	(revision 9d84a3c6d59c817ec96ba843ba8d40c2e779dad1)
++++ b/app/src/main/java/com/example/covel/Covel_home.java	(date 1622989372763)
+@@ -7,11 +7,24 @@
+ 
+ import android.content.Intent;
+ import android.os.Bundle;
++import android.util.Log;
+ import android.view.View;
+ import android.widget.ImageButton;
+ import android.widget.Toast;
+ 
++import com.android.volley.RequestQueue;
++import com.android.volley.Response;
++import com.android.volley.toolbox.Volley;
++import com.example.covel.DTO.BoardDTO;
++import com.example.covel.request.BoardListRequest;
++import com.example.covel.request.NicknameVerificationRequest;
++
++import org.json.JSONArray;
++import org.json.JSONException;
++import org.json.JSONObject;
++
+ import java.util.ArrayList;
++import java.util.HashMap;
+ 
+ public class Covel_home extends AppCompatActivity {
+ 
+@@ -21,6 +34,8 @@
+     private RecyclerView recyclerView;
+     protected RecyclerView.LayoutManager layoutManager;
+     private long backBtnTime = 0;
++    private JSONArray boards = null;
++    ArrayList<BoardDTO> boardList;
+ 
+     @Override
+     protected void onCreate(@Nullable Bundle savedInstanceState) {
+@@ -33,19 +48,12 @@
+         layoutManager = new LinearLayoutManager(this);
+         recyclerView.setLayoutManager(layoutManager);
+ 
+-        arrayList = new ArrayList<>();
++        boardList = new ArrayList<BoardDTO>();
+ 
+         mainadapter = new Covelhome_Recyclerviewadapter(arrayList);
+         recyclerView.setAdapter(mainadapter);
+ 
+-
+-        //imageBackButton.setOnClickListener(new View.OnClickListener() {
+-          //  @Override
+-            //public void onClick(View view) {
+-              //  Intent intent=new Intent(getApplicationContext(),Covel_login.class);
+-                //startActivity(intent);
+-            //}
+-        //});//imageBackButton 클릭 시 로그인 화면으로 이동
++        getBoardList();
+ 
+         imageMenuButton.setOnClickListener(new View.OnClickListener() {
+             @Override
+@@ -56,6 +64,49 @@
+         });//imageMenuButton
+     }
+ 
++    public void getBoardList() {
++        Response.Listener<String> responseListener = new Response.Listener<String>() {
++            @Override
++            public void onResponse(String response) {
++                System.out.println("response :"+ response);
++                try {
++                    JSONObject jsonObject = new JSONObject(response);
++                    boolean success = jsonObject.getBoolean("success");
++
++                    if(success) {
++                        boards = jsonObject.getJSONArray("result");
++                        System.out.println("boards :"+ boards);
++
++                        for(int i=0; i<boards.length(); i++) {
++                            JSONObject boardObj = boards.getJSONObject(i);
++                            int id = boardObj.getInt("id");
++                            String title = boardObj.getString("title");
++                            String content = boardObj.getString("content");
++                            String description = boardObj.getString("description");
++                            int userId = boardObj.getInt("userId");
++
++                            BoardDTO boardDTO = new BoardDTO(id, title, content, description, userId);
++                            boardList.add(boardDTO);
++                        }
++
++                        System.out.println("boardList :"+ boardList);
++
++                        // 뷰에 목록(boardList) 세팅
++
++                    } else {
++                        Toast.makeText(Covel_home.this, "목록 값 없음", Toast.LENGTH_SHORT).show();
++                        return;
++                    }
++                } catch (JSONException e) {
++                    e.printStackTrace();
++                }
++            }
++        };
++        BoardListRequest boardListRequest = new BoardListRequest(responseListener);
++        RequestQueue queue = Volley.newRequestQueue(Covel_home.this);
++        queue.add(boardListRequest);
++    }
++
+     @Override
+     public void onBackPressed() { // 초기화면에서 1초 안에 뒤로가기 버튼 두번 클릭 시 앱 종료
+         long curTime = System.currentTimeMillis();
+Index: app/src/main/java/com/example/covel/Covel_home_item.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.covel;\r\n\r\npublic class Covel_home_item {\r\n    private int novel_cover;\r\n    private String novel_name;\r\n    private String novelist_name;\r\n    private String novel_explain;\r\n\r\n\r\n    public void main_list(int novel_cover, String novel_name, String novelist_name, String novel_explain){\r\n        this.novel_cover = novel_cover;\r\n        this.novel_name = novel_name;\r\n        this.novelist_name = novelist_name;\r\n        this.novel_explain = novel_explain;\r\n    }\r\n\r\n    public int getNovel_cover() {\r\n        return novel_cover;\r\n    }\r\n    public void setNovel_cover(int novel_cover) {\r\n        this.novel_cover = novel_cover;\r\n    }\r\n\r\n    public String getNovel_name(){\r\n        return novel_name;\r\n    }\r\n    public void setNovel_name(String novel_name) {\r\n        this.novel_name = novel_name;\r\n    }\r\n\r\n    public String getNovelist_name() {\r\n        return novelist_name;\r\n    }\r\n    public void setNovelist_name(String novelist_name) {\r\n        this.novelist_name = novelist_name;\r\n    }\r\n\r\n    public String getNovel_explain() {\r\n        return novel_explain;\r\n    }\r\n    public void setNovel_explain(String novel_explain) {\r\n        this.novel_explain = novel_explain;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/covel/Covel_home_item.java b/app/src/main/java/com/example/covel/Covel_home_item.java
+--- a/app/src/main/java/com/example/covel/Covel_home_item.java	(revision 9d84a3c6d59c817ec96ba843ba8d40c2e779dad1)
++++ b/app/src/main/java/com/example/covel/Covel_home_item.java	(date 1622962373258)
+@@ -1,10 +1,13 @@
+ package com.example.covel;
+ 
++import android.os.Bundle;
++import android.widget.ImageView;
++
+ public class Covel_home_item {
+-    private int novel_cover;
+-    private String novel_name;
+-    private String novelist_name;
+-    private String novel_explain;
++    public int novel_cover;
++    public String novel_name;
++    public String novelist_name;
++    public String novel_explain;
+ 
+ 
+     public void main_list(int novel_cover, String novel_name, String novelist_name, String novel_explain){
+@@ -14,6 +17,8 @@
+         this.novel_explain = novel_explain;
+     }
+ 
++
++
+     public int getNovel_cover() {
+         return novel_cover;
+     }
+Index: app/src/main/java/com/example/covel/Covelhome_Recyclerviewadapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.covel;\r\n\r\nimport android.provider.ContactsContract;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.ImageView;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport java.util.ArrayList;\r\n\r\n\r\npublic class Covelhome_Recyclerviewadapter extends RecyclerView.Adapter<Covelhome_Recyclerviewadapter.CustomViewHolder>{\r\n\r\n    private ArrayList<Covel_home_item> arrayList;\r\n\r\n    public Covelhome_Recyclerviewadapter(ArrayList<Covel_home_item> arrayList){\r\n        this.arrayList = arrayList;\r\n    }\r\n\r\n     /*public static class ViewHolder extends RecyclerView.ViewHolder{\r\n        public ImageView novel_cover;\r\n        public TextView novel_name;\r\n        public TextView novelist_name;\r\n        public TextView novel_explain;\r\n\r\n        public ViewHolder(View itemView) {\r\n            super(itemView);\r\n            novel_cover = (ImageView) itemView.findViewById(R.id.novel_cover);\r\n            novel_name = (TextView) itemView.findViewById(R.id.novel_name);\r\n            novelist_name = (TextView) itemView.findViewById(R.id.novelist_name);\r\n            novel_explain = (TextView) itemView.findViewById(R.id.novel_explain);\r\n\r\n        }\r\n    }*/\r\n\r\n    @NonNull\r\n    @Override\r\n    public Covelhome_Recyclerviewadapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\r\n        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.covel_home_item,parent, false);\r\n        CustomViewHolder holder = new CustomViewHolder(v);\r\n        return holder;\r\n    }\r\n\r\n    @Override\r\n    public void onBindViewHolder(@NonNull final Covelhome_Recyclerviewadapter.CustomViewHolder holder, int position) {\r\n        holder.novel_cover.setImageResource(arrayList.get(position).getNovel_cover());\r\n        holder.novel_name.setText(arrayList.get(position).getNovel_name());\r\n        holder.novelist_name.setText(arrayList.get(position).getNovel_name());\r\n        holder.novel_explain.setText(arrayList.get(position).getNovel_explain());\r\n\r\n        holder.itemView.setTag(position);\r\n        holder.itemView.setOnClickListener(new View.OnClickListener(){\r\n            @Override\r\n            public void onClick(View v){\r\n                String curName = holder.novel_name.getText().toString();\r\n                Toast.makeText(v.getContext(),curName,Toast.LENGTH_SHORT).show();\r\n            }\r\n        });\r\n\r\n    }\r\n\r\n    public class CustomViewHolder extends RecyclerView.ViewHolder{\r\n        protected ImageView novel_cover;\r\n        protected TextView novel_name;\r\n        protected TextView novelist_name;\r\n        protected TextView novel_explain;\r\n\r\n        public CustomViewHolder(View itemView) {\r\n            super(itemView);\r\n            this.novel_cover=(ImageView) itemView.findViewById(R.id.novel_cover);\r\n            this.novel_name=(TextView) itemView.findViewById(R.id.novel_name);\r\n            this.novelist_name=(TextView) itemView.findViewById(R.id.novelist_name);\r\n            this.novel_explain=(TextView) itemView.findViewById(R.id.novel_explain);\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public int getItemCount() {\r\n        return (null != arrayList ? arrayList.size() : 0);\r\n    }\r\n\r\n    public void remove(int position) {\r\n        try {\r\n            arrayList.remove(position);\r\n            notifyItemRemoved(position);\r\n        } catch (IndexOutOfBoundsException ex){\r\n            ex.printStackTrace();\r\n        }\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/covel/Covelhome_Recyclerviewadapter.java b/app/src/main/java/com/example/covel/Covelhome_Recyclerviewadapter.java
+--- a/app/src/main/java/com/example/covel/Covelhome_Recyclerviewadapter.java	(revision 9d84a3c6d59c817ec96ba843ba8d40c2e779dad1)
++++ b/app/src/main/java/com/example/covel/Covelhome_Recyclerviewadapter.java	(date 1622966962640)
+@@ -16,30 +16,24 @@
+ 
+ public class Covelhome_Recyclerviewadapter extends RecyclerView.Adapter<Covelhome_Recyclerviewadapter.CustomViewHolder>{
+ 
+-    private ArrayList<Covel_home_item> arrayList;
++    private ArrayList<Covel_home_item> datas = new ArrayList<>();
++    private Covelhome_Recyclerviewadapter.OnItemClickListener mListener = null;
+ 
+-    public Covelhome_Recyclerviewadapter(ArrayList<Covel_home_item> arrayList){
++    /* public Covelhome_Recyclerviewadapter(ArrayList<Covel_home_item> arrayList){
+         this.arrayList = arrayList;
+-    }
++    }*/
+ 
+-     /*public static class ViewHolder extends RecyclerView.ViewHolder{
+-        public ImageView novel_cover;
+-        public TextView novel_name;
+-        public TextView novelist_name;
+-        public TextView novel_explain;
+ 
+-        public ViewHolder(View itemView) {
+-            super(itemView);
+-            novel_cover = (ImageView) itemView.findViewById(R.id.novel_cover);
+-            novel_name = (TextView) itemView.findViewById(R.id.novel_name);
+-            novelist_name = (TextView) itemView.findViewById(R.id.novelist_name);
+-            novel_explain = (TextView) itemView.findViewById(R.id.novel_explain);
+-
+-        }
+-    }*/
++    public interface OnItemClickListener {
++        void OnItemClick(View v, int position);
++    }
++    public void setOnItemClickListener(Covelhome_Recyclerviewadapter.OnItemClickListener listener){
++        this.mListener = listener;
++    }
+ 
+     @NonNull
+     @Override
++
+     public Covelhome_Recyclerviewadapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.covel_home_item,parent, false);
+         CustomViewHolder holder = new CustomViewHolder(v);
+@@ -48,10 +42,10 @@
+ 
+     @Override
+     public void onBindViewHolder(@NonNull final Covelhome_Recyclerviewadapter.CustomViewHolder holder, int position) {
+-        holder.novel_cover.setImageResource(arrayList.get(position).getNovel_cover());
+-        holder.novel_name.setText(arrayList.get(position).getNovel_name());
+-        holder.novelist_name.setText(arrayList.get(position).getNovel_name());
+-        holder.novel_explain.setText(arrayList.get(position).getNovel_explain());
++        holder.novel_cover.setImageResource(datas.get(position).getNovel_cover());
++        holder.novel_name.setText(datas.get(position).getNovel_name());
++        holder.novelist_name.setText(datas.get(position).getNovel_name());
++        holder.novel_explain.setText(datas.get(position).getNovel_explain());
+ 
+         holder.itemView.setTag(position);
+         holder.itemView.setOnClickListener(new View.OnClickListener(){
+@@ -69,6 +63,7 @@
+         protected TextView novel_name;
+         protected TextView novelist_name;
+         protected TextView novel_explain;
++        private RecyclerView main_list;
+ 
+         public CustomViewHolder(View itemView) {
+             super(itemView);
+@@ -76,17 +71,34 @@
+             this.novel_name=(TextView) itemView.findViewById(R.id.novel_name);
+             this.novelist_name=(TextView) itemView.findViewById(R.id.novelist_name);
+             this.novel_explain=(TextView) itemView.findViewById(R.id.novel_explain);
++            main_list = (RecyclerView)itemView.findViewById(R.id.main_list);
++            main_list.setOnClickListener(new View.OnClickListener() {
++                @Override
++                public void onClick(View view) {
++                    int position = getAdapterPosition();
++                    if(position != RecyclerView.NO_POSITION){
++                        if(mListener!= null){
++                            mListener.OnItemClick(view, position);
++                        }
++                    }
++
++                }
++            });
+         }
+     }
+ 
+     @Override
+     public int getItemCount() {
+-        return (null != arrayList ? arrayList.size() : 0);
++        return datas.size();
++    }
++
++    public void addItem(Covel_home_item data){
++        datas.add(data);
+     }
+ 
+     public void remove(int position) {
+         try {
+-            arrayList.remove(position);
++            datas.remove(position);
+             notifyItemRemoved(position);
+         } catch (IndexOutOfBoundsException ex){
+             ex.printStackTrace();
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n        <entry key=\"..\\:/Users/cloua/AndroidStudioProjects/blockchain-covelapp/app/src/main/res/layout/covel_menu.xml\" value=\"0.264\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"JDK\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 9d84a3c6d59c817ec96ba843ba8d40c2e779dad1)
++++ b/.idea/misc.xml	(date 1622960768015)
+@@ -3,7 +3,16 @@
+   <component name="DesignSurface">
+     <option name="filePathToZoomLevelMap">
+       <map>
++        <entry key="..\:/Users/cloua/AndroidStudioProjects/blockchain-covelapp/app/src/main/res/layout/covel_home.xml" value="0.20108695652173914" />
++        <entry key="..\:/Users/cloua/AndroidStudioProjects/blockchain-covelapp/app/src/main/res/layout/covel_home_item.xml" value="0.264" />
++        <entry key="..\:/Users/cloua/AndroidStudioProjects/blockchain-covelapp/app/src/main/res/layout/covel_login.xml" value="0.20108695652173914" />
+         <entry key="..\:/Users/cloua/AndroidStudioProjects/blockchain-covelapp/app/src/main/res/layout/covel_menu.xml" value="0.264" />
++        <entry key="..\:/Users/cloua/AndroidStudioProjects/blockchain-covelapp/app/src/main/res/layout/join_agreement.xml" value="0.20108695652173914" />
++        <entry key="..\:/Users/cloua/AndroidStudioProjects/blockchain-covelapp/app/src/main/res/layout/join_membership.xml" value="0.20108695652173914" />
++        <entry key="..\:/Users/cloua/AndroidStudioProjects/blockchain-covelapp/app/src/main/res/layout/my_information.xml" value="0.25364583333333335" />
++        <entry key="..\:/Users/cloua/AndroidStudioProjects/blockchain-covelapp/app/src/main/res/layout/novel_list.xml" value="0.48217821782178216" />
++        <entry key="..\:/Users/cloua/AndroidStudioProjects/blockchain-covelapp/app/src/main/res/layout/novel_list_item.xml" value="0.536" />
++        <entry key="..\:/Users/cloua/AndroidStudioProjects/blockchain-covelapp/app/src/main/res/layout/novel_upload.xml" value="0.25364583333333335" />
+       </map>
+     </option>
+   </component>
+Index: app/src/main/res/layout/covel_menu.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:orientation=\"vertical\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:padding=\"20dp\"\r\n    android:background=\"#FFFFFF\"\r\n    tools:context=\".Covel_menu\">\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"fill_parent\"\r\n        android:layout_height=\"wrap_content\">\r\n        <ImageButton\r\n            android:id=\"@+id/imgBackBtn3\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"4dp\"\r\n            android:background=\"@android:color/transparent\"\r\n            android:src=\"@drawable/backbutton\" />\r\n        <TextView\r\n            android:layout_width=\"fill_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginLeft=\"10dp\"\r\n            android:text=\"COVEL\"\r\n            android:textColor=\"#FFC0CB\"\r\n            android:textSize=\"35sp\"/>\r\n    </LinearLayout>\r\n\r\n    <TextView\r\n        android:layout_width=\"fill_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:background=\"@drawable/outline\"/>\r\n\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"270dp\"\r\n        android:orientation=\"vertical\">\r\n\r\n        <!-- 내정보-->\r\n        <FrameLayout\r\n            android:layout_width=\"fill_parent\"\r\n            android:layout_height=\"90dp\">\r\n\r\n            <ImageView\r\n                android:layout_width=\"60dp\"\r\n                android:layout_height=\"60dp\"\r\n                android:layout_marginLeft=\"6dp\"\r\n                android:layout_marginTop=\"8dp\"\r\n                android:layout_marginRight=\"8dp\"\r\n                android:src=\"@drawable/myname\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"200dp\"\r\n                android:layout_height=\"45dp\"\r\n                android:layout_gravity=\"center\"\r\n                android:text=\"내 정보\"\r\n                android:textColor=\"#000000\"\r\n                android:textSize=\"27dp\" />\r\n\r\n            <ImageButton\r\n                android:id=\"@+id/plus1\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_gravity=\"right|center_vertical\"\r\n                android:layout_marginRight=\"20dp\"\r\n                android:background=\"@android:color/transparent\"\r\n                android:src=\"@drawable/plus\" />\r\n        </FrameLayout>\r\n\r\n        <!-- 회원정보 -->\r\n        <FrameLayout\r\n            android:layout_width=\"fill_parent\"\r\n            android:layout_height=\"90dp\">\r\n\r\n            <ImageView\r\n                android:layout_width=\"51dp\"\r\n                android:layout_height=\"51dp\"\r\n                android:layout_marginLeft=\"11.3dp\"\r\n                android:layout_marginTop=\"11dp\"\r\n                android:layout_marginRight=\"8dp\"\r\n                android:src=\"@drawable/upload\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"200dp\"\r\n                android:layout_height=\"45dp\"\r\n                android:layout_gravity=\"center\"\r\n                android:text=\"회차 업로드\"\r\n                android:textColor=\"#000000\"\r\n                android:textSize=\"27dp\" />\r\n\r\n            <ImageButton\r\n                android:id=\"@+id/plus2\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_gravity=\"right|center_vertical\"\r\n                android:layout_marginRight=\"20dp\"\r\n                android:background=\"@android:color/transparent\"\r\n                android:src=\"@drawable/plus\" />\r\n        </FrameLayout>\r\n\r\n\r\n        <!-- 소설등록 -->\r\n        <FrameLayout\r\n            android:layout_width=\"fill_parent\"\r\n            android:layout_height=\"90dp\">\r\n\r\n            <ImageView\r\n                android:layout_width=\"50dp\"\r\n                android:layout_height=\"50dp\"\r\n                android:layout_marginLeft=\"11.3dp\"\r\n                android:layout_marginTop=\"13.5dp\"\r\n                android:layout_marginRight=\"8dp\"\r\n                android:src=\"@drawable/plus_2\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"200dp\"\r\n                android:layout_height=\"45dp\"\r\n                android:layout_gravity=\"center\"\r\n                android:text=\"소설 등록\"\r\n                android:textColor=\"#000000\"\r\n                android:textSize=\"27dp\" />\r\n\r\n            <ImageButton\r\n                android:id=\"@+id/plus3\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_gravity=\"right|center_vertical\"\r\n                android:layout_marginRight=\"20dp\"\r\n                android:background=\"@android:color/transparent\"\r\n                android:src=\"@drawable/plus\" />\r\n        </FrameLayout>\r\n    </LinearLayout>\r\n\r\n\r\n    <FrameLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\">\r\n\r\n        <Button\r\n            android:id=\"@+id/btnLogout\"\r\n            android:layout_width=\"100dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_gravity=\"right|bottom\"\r\n            android:layout_margin=\"25dp\"\r\n            android:background=\"@drawable/login_button_border\"\r\n            android:gravity=\"center\"\r\n            android:text=\"로그아웃\"\r\n            android:textSize=\"18sp\" />\r\n    </FrameLayout>\r\n\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/covel_menu.xml b/app/src/main/res/layout/covel_menu.xml
+--- a/app/src/main/res/layout/covel_menu.xml	(revision 9d84a3c6d59c817ec96ba843ba8d40c2e779dad1)
++++ b/app/src/main/res/layout/covel_menu.xml	(date 1622955478215)
+@@ -10,29 +10,42 @@
+ 
+     <LinearLayout
+         android:layout_width="fill_parent"
+-        android:layout_height="wrap_content">
+-        <ImageButton
+-            android:id="@+id/imgBackBtn3"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="4dp"
+-            android:background="@android:color/transparent"
+-            android:src="@drawable/backbutton" />
+-        <TextView
+-            android:layout_width="fill_parent"
+-            android:layout_height="wrap_content"
+-            android:layout_marginLeft="10dp"
+-            android:text="COVEL"
+-            android:textColor="#FFC0CB"
+-            android:textSize="35sp"/>
+-    </LinearLayout>
++        android:layout_height="50dp">
++
++        <FrameLayout
++            android:layout_width="match_parent"
++            android:layout_height="match_parent">
++
++            <ImageButton
++                android:id="@+id/imgBackBtn3"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="4dp"
++                android:background="@android:color/transparent"
++                android:src="@drawable/backbutton" />
++
++            <TextView
++                android:layout_width="wrap_content"
++                android:layout_height="40dp"
++                android:text="COVEL"
++                android:layout_marginRight="10dp"
++                android:includeFontPadding="false"
++                android:textColor="#FFC0CB"
++                android:textSize="35dp"
++                android:layout_gravity="center"/>
+ 
+-    <TextView
+-        android:layout_width="fill_parent"
+-        android:layout_height="wrap_content"
+-        android:background="@drawable/outline"/>
++            <TextView
++                android:layout_width="fill_parent"
++                android:layout_height="5dp"
++                android:layout_gravity="bottom"
++                android:background="@drawable/outline" />
+ 
+ 
++        </FrameLayout>
++
++    </LinearLayout>
++
++
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="270dp"
