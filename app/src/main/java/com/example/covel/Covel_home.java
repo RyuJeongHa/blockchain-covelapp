@@ -16,6 +16,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.covel.DTO.BoardDTO;
+import com.example.covel.preferences.AppPreferences;
 import com.example.covel.request.BoardListRequest;
 import com.example.covel.request.NicknameVerificationRequest;
 
@@ -53,7 +54,10 @@ public class Covel_home extends AppCompatActivity {
         mainadapter = new Covelhome_Recyclerviewadapter(arrayList);
         recyclerView.setAdapter(mainadapter);
 
-        getBoardList();
+        System.out.println("자동 로그인? "+ AppPreferences.isUserLoggedIn(getApplicationContext()));
+        if(AppPreferences.isUserLoggedIn(getApplicationContext())) {
+            getBoardList();
+        }
 
         imageMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override

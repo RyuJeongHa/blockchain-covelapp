@@ -24,8 +24,10 @@ public class AppPreferences {
         mPrefsEditor.commit();
     }
 
-    public static void logout() {
-        mPrefsEditor.remove("id_logged_in");
+    public static void logout(Context ctx) {
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(ctx);
+        mPrefsEditor = mPrefs.edit();
+        mPrefsEditor.putBoolean("id_logged_in", false);
         mPrefsEditor.remove("id");
         mPrefsEditor.remove("userId");
         mPrefsEditor.remove("password");
