@@ -1,0 +1,314 @@
+Index: app/src/main/java/com/example/covel/Novel_registration.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.covel;\r\n\r\npublic class Novel_registration {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/covel/Novel_registration.java	(revision 1a9d5b9946c1fd637e0a3d2820cc1b15769a0451)
++++ app/src/main/java/com/example/covel/Novel_registration.java	(date 1622886636263)
+@@ -1,4 +1,122 @@
+ package com.example.covel;
+ 
+-public class Novel_registration {
+-}
++import android.content.DialogInterface;
++import android.content.Intent;
++import android.graphics.Bitmap;
++import android.graphics.BitmapFactory;
++import android.net.Uri;
++import android.os.Bundle;
++import android.os.Environment;
++import android.view.View;
++import android.widget.Button;
++import android.widget.EditText;
++import android.widget.ImageButton;
++import android.widget.ImageView;
++import android.widget.TextView;
++import android.widget.Toast;
++
++import androidx.annotation.Nullable;
++import androidx.appcompat.app.AlertDialog;
++import androidx.appcompat.app.AppCompatActivity;
++
++import java.io.InputStream;
++
++public class Novel_registration extends AppCompatActivity {
++    private static final int REQUEST_CODE = 0;
++    private static final int REQUEST_IMAGE_CAPTURE = 0;
++    ImageView imageIllustration, imageView;
++    EditText edtTitle, edtExplain;
++    Button btnRegistration;
++    ImageButton imgBackBtn6;
++
++    @Override
++    protected void onCreate(@Nullable Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.novel_registration);
++
++        imageIllustration=(ImageView)findViewById(R.id.imageIllustration);
++        btnRegistration=(Button)findViewById(R.id.btnRegistration);
++        edtTitle=(EditText)findViewById(R.id.edtTitle);
++        edtExplain=(EditText)findViewById(R.id.edtExplain);
++        imgBackBtn6=(ImageButton)findViewById(R.id.imgBackBtn6);
++
++        imgBackBtn6.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                Intent intent = new Intent(getApplicationContext(),Covel_menu.class);
++                startActivity(intent);
++            }
++        });//imgBackBtn6
++
++        imageIllustration.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                Intent intent = new Intent();
++                intent.setType("image/*");
++                intent.setAction(Intent.ACTION_GET_CONTENT);
++                startActivityForResult(intent, REQUEST_CODE);//갤러리 액티비티로부터 가져온 결과 데이터를
++                //처리하기 위해 StartActivityForResult() 함수를 통해 액티비티 실행
++            }
++        });//imageIllustration
++
++        btnRegistration.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                AlertDialog.Builder builder= new AlertDialog.Builder(Novel_registration.this);
++                builder.setMessage("소설을 등록하시겠습니까?");
++                builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
++                    @Override
++                    public void onClick(DialogInterface dialogInterface, int i) {
++                        Intent intent = new Intent(getApplicationContext(),Novel_registration.class);
++                        startActivity(intent);
++                    }
++                });//확인 버튼
++                // 확인을 누르면 작성한 일러스트, 제목, 소설 설명이 DB에 등록되어야 함
++
++                builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
++                    @Override
++                    public void onClick(DialogInterface dialogInterface, int i) {
++                        Intent intent = new Intent(getApplicationContext(),Novel_registration.class);
++                        startActivity(intent);
++                    }
++                });//취소 버튼
++                builder.show();
++            }
++        });//btnRegistration
++
++
++
++    }//onCreate
++
++    @Override
++    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
++        super.onActivityResult(requestCode, resultCode, data);
++        {
++            if(requestCode == REQUEST_CODE){
++                if(resultCode==RESULT_OK){
++                    try{
++                        InputStream in = getContentResolver().openInputStream(data.getData());
++
++                        Bitmap img = BitmapFactory.decodeStream(in);
++                        in.close();
++
++                        imageIllustration.setImageBitmap(img);
++                    }catch(Exception e)
++                    {
++
++                    }
++                }
++                else if (resultCode == RESULT_CANCELED){
++                    Toast.makeText(this, "사진 선택 취소", Toast.LENGTH_LONG).show();
++                }
++            }
++            if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
++                Bundle extras = data.getExtras();
++                Bitmap imageBitmap = (Bitmap) extras.get("data");
++                imageView.setImageBitmap(imageBitmap);
++            }
++        }
++    }//onActivityResult
++    
++
++}//Novel_registration
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.example.covel\">\r\n    \r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:usesCleartextTraffic=\"true\"\r\n        android:theme=\"@style/AppTheme\">\r\n        <activity android:name=\".Covel_login\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        <activity android:name=\".Join_agreement\"/>\r\n        <activity android:name=\".Join_membership\"/>\r\n        <activity android:name=\".Covel_home\"/>\r\n        <activity android:name=\".Covel_menu\"/>\r\n        <activity android:name=\".My_information\"/>\r\n        <activity android:name=\".Novel_upload\"/>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 1a9d5b9946c1fd637e0a3d2820cc1b15769a0451)
++++ app/src/main/AndroidManifest.xml	(date 1622876906441)
+@@ -26,6 +26,7 @@
+         <activity android:name=".Covel_menu"/>
+         <activity android:name=".My_information"/>
+         <activity android:name=".Novel_upload"/>
++        <activity android:name=".Novel_registration"/>
+     </application>
+ 
+ </manifest>
+\ No newline at end of file
+Index: app/src/main/res/layout/novel_registration.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/novel_registration.xml	(date 1622886683882)
++++ app/src/main/res/layout/novel_registration.xml	(date 1622886683882)
+@@ -0,0 +1,109 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:orientation="vertical"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:padding="20dp"
++    android:background="#FFFFFF"
++    tools:context=".Novel_registration">
++
++    <FrameLayout
++        android:layout_width="fill_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="10dp">
++        <ImageButton
++            android:id="@+id/imgBackBtn6"
++            android:layout_width="50dp"
++            android:layout_height="50dp"
++            android:background="@android:color/transparent"
++            android:src="@drawable/backbutton" />
++            <TextView
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_marginLeft="60dp"
++                android:layout_gravity="left"
++                android:text="COVEL"
++                android:textColor="#FFC0CB"
++                android:textSize="35sp" />
++    </FrameLayout>
++
++    <TextView
++        android:layout_width="fill_parent"
++        android:layout_height="wrap_content"
++        android:background="@drawable/outline"
++        android:layout_marginLeft="5dp"
++        android:layout_marginRight="5dp"/>
++
++    <FrameLayout
++        android:layout_width="fill_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="10dp"
++        android:layout_marginLeft="5dp"
++        android:layout_marginRight="5dp">
++        <LinearLayout
++            android:layout_width="fill_parent"
++            android:layout_height="wrap_content"
++            android:orientation="vertical"
++            android:layout_marginTop="3dp">
++            <LinearLayout
++                android:layout_width="fill_parent"
++                android:layout_height="154dp"
++                android:background="@drawable/border2"
++                android:layout_marginTop="7dp">
++                <ImageView
++                    android:id="@+id/imageIllustration"
++                    android:layout_width="100dp"
++                    android:layout_height="100dp"
++                    android:layout_marginLeft="8dp"
++                    android:layout_weight="1"
++                    android:layout_gravity="center"
++                    android:scaleType="fitXY"
++                    android:src="@drawable/main_logo2"/>
++                <LinearLayout
++                    android:layout_width="fill_parent"
++                    android:layout_height="wrap_content"
++                    android:orientation="vertical"
++                    android:layout_marginTop="5dp"
++                    android:layout_weight="100"
++                    android:layout_marginRight="5dp">
++                    <EditText
++                        android:id="@+id/edtTitle"
++                        android:layout_width="fill_parent"
++                        android:layout_height="30dp"
++                        android:background="@drawable/login_border"
++                        android:hint=" 제목 입력"
++                        android:textColor="#000000"/>
++                    <EditText
++                        android:id="@+id/edtExplain"
++                        android:layout_width="fill_parent"
++                        android:layout_height="wrap_content"
++                        android:layout_marginTop="5dp"
++                        android:background="@drawable/login_border"
++                        android:lines="5"
++                        android:gravity="top"
++                        android:hint=" 소설 설명"
++                        android:textColor="#000000"/>
++                </LinearLayout>
++            </LinearLayout>
++        </LinearLayout>
++    </FrameLayout>
++    <ImageView
++        android:id="@+id/imageView"
++        android:layout_width="200dp"
++        android:layout_height="200dp"
++        android:layout_gravity="center"
++        android:layout_marginTop="20dp"/>
++    <Button
++        android:id="@+id/btnRegistration"
++        android:layout_width="150dp"
++        android:layout_height="wrap_content"
++        android:layout_gravity="center"
++        android:layout_marginTop="20dp"
++        android:layout_marginLeft="10dp"
++        android:layout_marginRight="10dp"
++        android:background="@drawable/login_button_border"
++        android:text="등록"
++        android:textSize="20dp"/>
++
++</LinearLayout>
+\ No newline at end of file
+Index: app/src/main/res/drawable/border2.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/border2.xml	(date 1622878826543)
++++ app/src/main/res/drawable/border2.xml	(date 1622878826543)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="utf-8"?>
++<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
++
++    <item>
++        <shape android:shape="rectangle">
++            <solid android:color="#000000"/>
++        </shape>
++    </item>
++
++    <item android:top="2dp"
++        android:right="2dp"
++        android:left="2dp"
++        android:bottom="2dp">
++        <shape android:shape="rectangle">
++            <solid android:color="#FFFFFF"/>
++        </shape>
++
++    </item>
++
++</layer-list>
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">Covel</string>\r\n    <string name=\"agreement1\">전체동의는 필수 및 선택 정보에 대한 동의도 포함되어 있으며, 개별적으로도 동의를 선택하실 수 있습니다.\r\n        선택항목에 대한 동의를 거부하시는 경우에도 서비스는 이용이 가능합니다.</string>\r\n    <string name=\"sign_up\">인증 확인 완료!\\n회원가입이 완료되었습니다.\\n로그인하여 주시기 바랍니다.</string>\r\n    <string name=\"find_novel\"><u>내 소설 찾기</u></string>\r\n    <string name=\"attachedFile\"><u>첨부파일</u></string>\r\n</resources>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/strings.xml	(revision 1a9d5b9946c1fd637e0a3d2820cc1b15769a0451)
++++ app/src/main/res/values/strings.xml	(date 1622879467581)
+@@ -5,4 +5,5 @@
+     <string name="sign_up">인증 확인 완료!\n회원가입이 완료되었습니다.\n로그인하여 주시기 바랍니다.</string>
+     <string name="find_novel"><u>내 소설 찾기</u></string>
+     <string name="attachedFile"><u>첨부파일</u></string>
++    <string name="image_upload1">이미지 클릭 시 일러스트 변경 가능</string>
+ </resources>

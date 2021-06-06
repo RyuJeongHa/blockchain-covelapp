@@ -5,4 +5,5 @@
     <string name="sign_up">인증 확인 완료!\n회원가입이 완료되었습니다.\n로그인하여 주시기 바랍니다.</string>
     <string name="find_novel"><u>내 소설 찾기</u></string>
     <string name="attachedFile"><u>첨부파일</u></string>
+    <string name="image_upload1">이미지 클릭 시 일러스트 변경 가능</string>
 </resources>
