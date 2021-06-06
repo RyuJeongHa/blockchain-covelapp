@@ -7,11 +7,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+import com.example.covel.DTO.BoardDTO;
+import com.example.covel.request.BoardListRequest;
+import com.example.covel.request.NicknameVerificationRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Covel_home extends AppCompatActivity {
 
@@ -21,6 +34,8 @@ public class Covel_home extends AppCompatActivity {
     private RecyclerView recyclerView;
     protected RecyclerView.LayoutManager layoutManager;
     private long backBtnTime = 0;
+    private JSONArray boards = null;
+    ArrayList<BoardDTO> boardList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,19 +48,12 @@ public class Covel_home extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        arrayList = new ArrayList<>();
+        boardList = new ArrayList<BoardDTO>();
 
         mainadapter = new Covelhome_Recyclerviewadapter(arrayList);
         recyclerView.setAdapter(mainadapter);
 
-
-        //imageBackButton.setOnClickListener(new View.OnClickListener() {
-          //  @Override
-            //public void onClick(View view) {
-              //  Intent intent=new Intent(getApplicationContext(),Covel_login.class);
-                //startActivity(intent);
-            //}
-        //});//imageBackButton 클릭 시 로그인 화면으로 이동
+        getBoardList();
 
         imageMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +62,49 @@ public class Covel_home extends AppCompatActivity {
                 startActivity(intent);
             }
         });//imageMenuButton
+    }
+
+    public void getBoardList() {
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                System.out.println("response :"+ response);
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    boolean success = jsonObject.getBoolean("success");
+
+                    if(success) {
+                        boards = jsonObject.getJSONArray("result");
+                        System.out.println("boards :"+ boards);
+
+                        for(int i=0; i<boards.length(); i++) {
+                            JSONObject boardObj = boards.getJSONObject(i);
+                            int id = boardObj.getInt("id");
+                            String title = boardObj.getString("title");
+                            String content = boardObj.getString("content");
+                            String description = boardObj.getString("description");
+                            int userId = boardObj.getInt("userId");
+
+                            BoardDTO boardDTO = new BoardDTO(id, title, content, description, userId);
+                            boardList.add(boardDTO);
+                        }
+
+                        System.out.println("boardList :"+ boardList);
+
+                        // 뷰에 목록(boardList) 세팅
+
+                    } else {
+                        Toast.makeText(Covel_home.this, "목록 값 없음", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        BoardListRequest boardListRequest = new BoardListRequest(responseListener);
+        RequestQueue queue = Volley.newRequestQueue(Covel_home.this);
+        queue.add(boardListRequest);
     }
 
     @Override

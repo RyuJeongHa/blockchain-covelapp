@@ -32,6 +32,11 @@ public class Covel_login extends AppCompatActivity {
         btnLogin=(Button)findViewById(R.id.btnLogin);
         btnTerms=(Button)findViewById(R.id.btnTerms);
 
+        // 로그인 했던 유저 자동로그인
+        if(AppPreferences.isUserLoggedIn(getApplicationContext())) {
+            autoLogin();
+        }
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,18 +66,10 @@ public class Covel_login extends AppCompatActivity {
 
                                 Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
 
-                                AppPreferences.setUserLoggedIn(getApplicationContext(), true);
-                                AppPreferences.setId(getApplicationContext(), id);
-                                AppPreferences.setUserId(getApplicationContext(), userId);
-                                AppPreferences.setPassword(getApplicationContext(), password);
-                                AppPreferences.setNickname(getApplicationContext(), nickname);
-                                AppPreferences.setName(getApplicationContext(), name);
-                                AppPreferences.setRgnumber1(getApplicationContext(), rgnumber1);
-                                AppPreferences.setRgnumber2(getApplicationContext(), rgnumber2);
+                                AppPreferences.login(getApplicationContext(), id, userId, password, nickname, name, rgnumber1, rgnumber2);
 
                                 Intent intent = new Intent(getApplicationContext(),Covel_home.class);
                                 startActivity(intent);
-
                                 finish();
                             } else { // 로그인 실패
                                 Toast.makeText(getApplicationContext(), "등록되지 않은 회원이거나, 비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
@@ -83,7 +80,6 @@ public class Covel_login extends AppCompatActivity {
                         }
                     }
                 };
-
                 // 서버로 Volley 이용해서 요청
                 LoginRequest loginRequest = new LoginRequest(userId, password, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(Covel_login.this);
@@ -101,6 +97,13 @@ public class Covel_login extends AppCompatActivity {
         });//btnTerms(terms=약관)
 
     }//onCreate
+
+    private void autoLogin() {
+        Toast.makeText(getApplicationContext(), "자동로그인", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(),Covel_home.class);
+        startActivity(intent);
+        finish();
+    }
 
     @Override
     public void onBackPressed() { // 초기화면에서 1초 안에 뒤로가기 버튼 두번 클릭 시 앱 종료

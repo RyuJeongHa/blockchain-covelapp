@@ -61,12 +61,10 @@ public class Covel_menu extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AppPreferences.logout();
+
                 Intent intent=new Intent(getApplicationContext(),Covel_login.class);
                 startActivity(intent);
-
-                AppPreferences.setUserLoggedIn(getApplicationContext(), false);
-                AppPreferences.remove();
-
                 finish();
             }
         });//btnLogout
