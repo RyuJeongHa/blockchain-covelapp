@@ -1,12 +1,14 @@
 package com.example.covel.DTO;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Data;
 
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
+
+
 public class BoardDTO {
     private int id;
     private String title;
@@ -14,6 +16,5 @@ public class BoardDTO {
     private String description;
     private int userId;
 
-    public BoardDTO(int id, String title, String content, String description, int userId) {
-    }
+
 }

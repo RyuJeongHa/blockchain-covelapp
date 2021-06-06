@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Novel_list extends AppCompatActivity {
 
     ImageButton list_Back;
-    private ArrayList<Novel_list_item> arrayList;
+    private ArrayList<Novel_list_item> arrayList2;
     private RecyclerView novel_list;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
