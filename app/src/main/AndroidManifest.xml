@@ -27,6 +27,8 @@
         <activity android:name=".My_information"/>
         <activity android:name=".Novel_upload"/>
         <activity android:name=".Novel_registration"/>
+        <activity android:name=".Novel_list"/>
+        <activity android:name=".Novel_main"/>
     </application>
 
 </manifest>
