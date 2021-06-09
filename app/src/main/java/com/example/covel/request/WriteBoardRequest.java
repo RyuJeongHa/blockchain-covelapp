@@ -9,17 +9,19 @@ import com.android.volley.request.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginRequest extends StringRequest {
+public class WriteBoardRequest extends StringRequest {
 
-    final static private String URL = "http://covel.dothome.co.kr/Login.php";
+    final static private String URL = "http://covel.dothome.co.kr/WriteBoard.php";
     private Map<String, String> map;
 
-    public LoginRequest(String userId, String password, Response.Listener<String> listener) {
+    public WriteBoardRequest(String title, String description, int userId, String imagePath, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);
 
         map = new HashMap<>();
-        map.put("userId", userId);
-        map.put("password", password);
+        map.put("title", title);
+        map.put("description", description);
+        map.put("userId", String.valueOf(userId));
+        map.put("imagePath", imagePath);
     }
 
     @Nullable
@@ -28,4 +30,6 @@ public class LoginRequest extends StringRequest {
     protected Map<String, String> getParams() throws AuthFailureError {
         return map;
     }
+
+
 }

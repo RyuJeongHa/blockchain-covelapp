@@ -1,6 +1,7 @@
 package com.example.covel;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,20 +13,19 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
 import com.example.covel.DTO.BoardDTO;
-import com.example.covel.preferences.AppPreferences;
-import com.example.covel.request.BoardListRequest;
-import com.example.covel.request.NicknameVerificationRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Covel_home extends AppCompatActivity {
 
@@ -54,10 +54,7 @@ public class Covel_home extends AppCompatActivity {
         mainadapter = new Covelhome_Recyclerviewadapter(arrayList);
         recyclerView.setAdapter(mainadapter);
 
-        System.out.println("자동 로그인? "+ AppPreferences.isUserLoggedIn(getApplicationContext()));
-        if(AppPreferences.isUserLoggedIn(getApplicationContext())) {
-            getBoardList();
-        }
+        loadBoardDB();
 
         imageMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,48 +65,71 @@ public class Covel_home extends AppCompatActivity {
         });//imageMenuButton
     }
 
-    public void getBoardList() {
-        Response.Listener<String> responseListener = new Response.Listener<String>() {
+    private void loadBoardDB() {
+        new Thread() {
             @Override
-            public void onResponse(String response) {
-                System.out.println("response :"+ response);
+            public void run() {
+                String uri = "http://covel.dothome.co.kr/BoardList.php";
                 try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    boolean success = jsonObject.getBoolean("success");
+                    URL url = new URL(uri);
+                    HttpURLConnection con = (HttpURLConnection)url.openConnection();
+                    con.setRequestMethod("GET");
+                    con.setDoInput(true);
+                    con.setUseCaches(false);
 
-                    if(success) {
-                        boards = jsonObject.getJSONArray("result");
-                        System.out.println("boards :"+ boards);
+                    InputStream is = con.getInputStream();
+                    InputStreamReader isr = new InputStreamReader(is);
+                    BufferedReader reader = new BufferedReader(isr);
 
-                        for(int i=0; i<boards.length(); i++) {
-                            JSONObject boardObj = boards.getJSONObject(i);
-                            int id = boardObj.getInt("id");
-                            String title = boardObj.getString("title");
-                            String content = boardObj.getString("content");
-                            String description = boardObj.getString("description");
-                            int userId = boardObj.getInt("userId");
-
-                            BoardDTO boardDTO = new BoardDTO(id, title, content, description, userId);
-                            boardList.add(boardDTO);
-                        }
-
-                        System.out.println("boardList :"+ boardList);
-
-                        // 뷰에 목록(boardList) 세팅
-
-                    } else {
-                        Toast.makeText(Covel_home.this, "목록 값 없음", Toast.LENGTH_SHORT).show();
-                        return;
+                    final StringBuffer buffer = new StringBuffer();
+                    String line = reader.readLine();
+                    while(line!=null) {
+                        buffer.append(line+"\n");
+                        line = reader.readLine();
                     }
-                } catch (JSONException e) {
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                JSONObject jsonObject = new JSONObject(buffer.toString());
+                                boolean success = jsonObject.getBoolean("success");
+
+                                if(success) {
+                                    boards = jsonObject.getJSONArray("result");
+
+                                    for(int i=0; i<boards.length(); i++) {
+                                        JSONObject boardObj = boards.getJSONObject(i);
+                                        int id = boardObj.getInt("id");
+                                        String title = boardObj.getString("title");
+                                        String content = boardObj.getString("content");
+                                        String description = boardObj.getString("description");
+                                        int userId = boardObj.getInt("userId");
+                                        String imagePath = "http://covel.dothome.co.kr/"+ boardObj.getString("imagePath");
+
+                                        BoardDTO boardDTO = new BoardDTO(id, title, content, description, userId, imagePath);
+                                        boardList.add(boardDTO);
+                                    }
+
+                                    System.out.println("boardList :"+ boardList);
+
+                                    /* 뷰에 목록(boardList) 세팅 */
+
+                                } else {
+                                    Toast.makeText(Covel_home.this, "목록 값 없음", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-        };
-        BoardListRequest boardListRequest = new BoardListRequest(responseListener);
-        RequestQueue queue = Volley.newRequestQueue(Covel_home.this);
-        queue.add(boardListRequest);
-    }
+        }.start();
+    } //loadBoardDB()
 
     @Override
     public void onBackPressed() { // 초기화면에서 1초 안에 뒤로가기 버튼 두번 클릭 시 앱 종료
