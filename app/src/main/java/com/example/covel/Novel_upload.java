@@ -109,6 +109,11 @@ public class Novel_upload extends AppCompatActivity {
                 Uri uri = Uri.parse(Environment.getDownloadCacheDirectory().getPath()+"/Download/");
                 intent.setDataAndType(uri,"application/*");
                 startActivity(intent.createChooser(intent,"OPEN"));
+
+                Intent it = new Intent(Intent.ACTION_GET_CONTENT);
+                it.setType("text/plain");
+                it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i.createChooser(it,"OPEN"));
             }
         });//attached_file
         // 클릭하면 파일탐색기가 나와서 파일 첨부가 가능
