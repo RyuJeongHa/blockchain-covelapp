@@ -18,14 +18,14 @@
             android:layout_height="50dp"
             android:background="@android:color/transparent"
             android:src="@drawable/backbutton" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:layout_gravity="left"
-                android:text="COVEL"
-                android:textColor="#FFC0CB"
-                android:textSize="35sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_gravity="left"
+            android:text="COVEL"
+            android:textColor="#FFC0CB"
+            android:textSize="35sp" />
     </FrameLayout>
 
     <TextView
@@ -64,8 +64,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_marginTop="5dp"
-                    android:layout_weight="100"
-                    android:layout_marginRight="5dp">
+                    android:layout_marginRight="4dp"
+                    android:layout_weight="80">
                     <EditText
                         android:id="@+id/edtTitle"
                         android:layout_width="fill_parent"
