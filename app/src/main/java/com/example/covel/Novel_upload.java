@@ -21,13 +21,27 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+import com.example.covel.DTO.BoardDTO;
+import com.example.covel.preferences.AppPreferences;
+import com.example.covel.request.FindMyNovelListRequest;
+import com.example.covel.request.NicknameVerificationRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
+import java.util.ArrayList;
 
 public class Novel_upload extends AppCompatActivity {
     ImageButton imgBackBtn5;
     Button btnUpload;
     EditText upload_title, write_novel, file_name; //제목 or 회차 넘버링, 소설쓰기, 파일명
     TextView findNovelTextView, attached_file; //내 소설 찾기, 첨부파일
+    ArrayList<String> titleList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,6 +61,8 @@ public class Novel_upload extends AppCompatActivity {
         //TextView
         findNovelTextView=(TextView)findViewById(R.id.findNovelTextView);
         attached_file=(TextView)findViewById(R.id.attached_file);
+
+        titleList = new ArrayList<String>();
 
         /*
         // 전송할 파일의 경로
@@ -90,8 +106,38 @@ public class Novel_upload extends AppCompatActivity {
         findNovelTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "CLICK~~~~~", Toast.LENGTH_SHORT).show();
-                // TextView가 클릭이 되는지 보려고 토스트메시지 넣었어요.. 연동할 때 바꿔주세요..
+                int userId = AppPreferences.getId(getApplicationContext());
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            boolean success = jsonObject.getBoolean("success");
+
+                            if(success) {
+                                JSONArray titles = jsonObject.getJSONArray("result");
+
+                                for(int i=0; i<titles.length(); i++) {
+                                    JSONObject titleObj = titles.getJSONObject(i);
+                                    String title = titleObj.getString("title");
+                                    titleList.add(title);
+                                }
+
+                                System.out.println("titleList : "+ titleList);
+
+                                /* 뷰에 목록(titleList) 세팅 */
+
+                            } else {
+                                Toast.makeText(Novel_upload.this, "등록된 소설이 없습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                FindMyNovelListRequest findMyNovelListRequest = new FindMyNovelListRequest(userId, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(Novel_upload.this);
+                queue.add(findMyNovelListRequest);
             }
         });
         //findNovelTextView - upload_title(EditText)에서 친 내용을 내 소설 찾기 텍스트를 누르면
