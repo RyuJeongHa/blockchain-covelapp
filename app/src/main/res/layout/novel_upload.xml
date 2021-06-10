@@ -41,13 +41,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <EditText
+            <TextView
                 android:id="@+id/upload_title"
                 android:layout_width="fill_parent"
                 android:layout_height="30dp"
-                android:hint="  제목, 회차 넘버링"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="18dp"
                 android:background="@drawable/login_border"
-                android:inputType="textCapWords"/>
+                />
             <TextView
                 android:id="@+id/findNovelTextView"
                 android:layout_width="match_parent"
@@ -65,16 +67,16 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="15dp">
-        <EditText
+        <TextView
             android:id="@+id/write_novel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="top"
-            android:hint=" 소설 내용 추가"
-            android:lines="15"
             android:textColor="#000000"
+            android:lines="20"
             android:background="@drawable/login_border"/>
     </FrameLayout>
+
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -85,13 +87,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right">
-            <EditText
+            <TextView
                 android:id="@+id/file_name"
                 android:layout_width="255dp"
                 android:layout_height="25dp"
-                android:hint=" 첨부파일 이름"
                 android:layout_marginRight="23.5dp"
                 android:textColor="#000000"
+                android:textSize="15sp"
                 android:background="@drawable/login_border"/>
             <ImageView
                 android:layout_width="20dp"

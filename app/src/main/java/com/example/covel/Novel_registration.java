@@ -54,8 +54,8 @@ import java.util.Map;
 
 public class Novel_registration extends AppCompatActivity {
     private static final int REQUEST_CODE = 0;
-    private static final int REQUEST_IMAGE_CAPTURE = 0;
-    ImageView imageIllustration, imageView;
+    private static final int REQUEST_IMAGE_CAPTURE=0;
+    ImageView imageIllustration;
     EditText edtTitle, edtExplain;
     Button btnRegistration;
     ImageButton imgBackBtn6;

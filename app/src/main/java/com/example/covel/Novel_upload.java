@@ -34,31 +34,32 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class Novel_upload extends AppCompatActivity {
     ImageButton imgBackBtn5;
     Button btnUpload;
-    EditText upload_title, write_novel, file_name; //제목 or 회차 넘버링, 소설쓰기, 파일명
-    TextView findNovelTextView, attached_file; //내 소설 찾기, 첨부파일
+    TextView write_novel,file_name,upload_title, findNovelTextView, attached_file; //내 소설 찾기, 첨부파일
     ArrayList<String> titleList;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.novel_upload);
+
+
         //이미지 버튼
         imgBackBtn5=(ImageButton)findViewById(R.id.imgBackBtn5);
 
         //버튼
         btnUpload=(Button)findViewById(R.id.btnUpload);
 
-        //EditText
-        upload_title=(EditText)findViewById(R.id.upload_title);
-        write_novel=(EditText)findViewById(R.id.write_novel);
-        file_name=(EditText)findViewById(R.id.file_name);
-
         //TextView
+        upload_title=(TextView) findViewById(R.id.upload_title);
+        write_novel=(TextView) findViewById(R.id.write_novel);
+        file_name=(TextView) findViewById(R.id.file_name);
         findNovelTextView=(TextView)findViewById(R.id.findNovelTextView);
         attached_file=(TextView)findViewById(R.id.attached_file);
 
@@ -106,6 +107,9 @@ public class Novel_upload extends AppCompatActivity {
         findNovelTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                upload_title.setText(findNovelTextView.getText());
+
                 int userId = AppPreferences.getId(getApplicationContext());
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -158,14 +162,24 @@ public class Novel_upload extends AppCompatActivity {
 
                 Intent it = new Intent(Intent.ACTION_GET_CONTENT);
                 it.setType("text/plain");
+                Uri uri2=Uri.parse(Environment.getDownloadCacheDirectory().getPath()+"text/");
                 it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i.createChooser(it,"OPEN"));
+                startActivity(it.createChooser(it,"OPEN"));
+                file_name.setText(uri2.getLastPathSegment());
+
+
+
+
+
+
             }
         });//attached_file
         // 클릭하면 파일탐색기가 나와서 파일 첨부가 가능
         // 선택한 파일이 file_name칸에 보여져야 함
 
     }//onCreate
+
+
 
 
 }//Novel_upload
