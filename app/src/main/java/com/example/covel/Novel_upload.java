@@ -1,29 +1,16 @@
 package com.example.covel;
 
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
+
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.OpenableColumns;
-import android.text.Spannable;
-import android.text.Spanned;
-import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,33 +19,25 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-import com.example.covel.DTO.BoardDTO;
 import com.example.covel.preferences.AppPreferences;
 import com.example.covel.request.FindMyNovelListRequest;
-import com.example.covel.request.NicknameVerificationRequest;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
-import lombok.val;
+import java.util.Objects;
 
 import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
-import static com.example.covel.Novel_registration.getFullPathFromUri;
 
 public class Novel_upload extends AppCompatActivity {
     private static final int REQUEST_CODE = 0;
@@ -69,7 +48,6 @@ public class Novel_upload extends AppCompatActivity {
     TextView write_novel,file_name,upload_title, findNovelTextView, attached_file;
     ArrayList<String> titleList;
     private static final int READ_REQUEST_CODE = 123;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -91,19 +69,6 @@ public class Novel_upload extends AppCompatActivity {
         attached_file=(TextView)findViewById(R.id.attached_file);
 
         titleList = new ArrayList<String>();
-
-        /*
-        // 전송할 파일의 경로
-        String szSendFilePath = Environment.getExternalStorageDirectory()
-                .getAbsolutePath() + "/test.jpg";
-        File f = new File(szSendFilePath);
-        if (!f.exists()) {
-            Toast.makeText(this, "파일이 없습니다.", Toast.LENGTH_SHORT).show();
-        }
-
-         //File객체로부터 Uri값 생성
-        final Uri fileUri = Uri.fromFile(f); */
-
 
         imgBackBtn5.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,17 +146,11 @@ public class Novel_upload extends AppCompatActivity {
 
                  Intent it = new Intent(Intent.ACTION_GET_CONTENT);
                  it.setType("text/plain");
-                 //Uri uri2=Uri.parse(Environment.getDownloadCacheDirectory().getPath()+"text/");
-                 //File file = new File(Environment.getDownloadCacheDirectory().getPath()+"text/");
-                 //String filename = file.getName();
-                 //Log.d("TEST",filename);
-                 //String strFile = it.toString();
+
                  it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                 //startActivity(it.createChooser(it,"OPEN"));
-                 //file_name.setText(strFile);
+
                  startActivityForResult(it.createChooser(it,"Select a file"),
                          READ_REQUEST_CODE);
-
             }
 
         });//attached_file
@@ -208,13 +167,19 @@ public class Novel_upload extends AppCompatActivity {
             Uri selectedfile = data.getData();
             //경로 정보: selectedfile.getPath();
             //전체 URI 정보: selectedfile.to(String);
+
+            System.out.println("경로 :"+ selectedfile.getPath());
+            System.out.println("전체 URI 정보 :"+ selectedfile.toString());
+
             Toast.makeText(getApplicationContext(),getFileNameFromUri(selectedfile),
                     Toast.LENGTH_LONG).show();
+
             file_name.setText(getFileNameFromUri(selectedfile));
-            //Log d(TAG,"SELECTED:"+selectedfile.toString());
+
+            write_novel.setText(readTextFromUri(selectedfile));
+
         }
     }//onActivityResult
-
 
     //URI에서 파일명 얻기
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -228,52 +193,26 @@ public class Novel_upload extends AppCompatActivity {
             }
         cursor.close();
         return fileName;
-        }
-
-
-    /*
-    public void mOnFileRead(View v){
-        String read = ReadTextFile(filePath);
-        write_novel.setText(read);
-    }//mOnFileRead
-
-    //경로의 텍스트 파일 읽기
-    public String ReadTextFile(String path){
-        StringBuffer strBuffer = new StringBuffer();
-        try{
-            InputStream is = new FileInputStream(path);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            String line="";
-            while((line=reader.readLine())!=null){
-                strBuffer.append(line+"\n");
-            }
-
-            reader.close();
-            is.close();
-        }catch (IOException e){
-            e.printStackTrace();
-            return "";
-        }
-        return strBuffer.toString();
-    }*/
-
-    /*
-    private String getStringAssetFile(Activity activity)throws Exception{
-        AssetManager as = activity.getAssets();
-        InputStream is = as.open("text/plain");
-        String text = converStreamToString(is);
-        is.close();
-        return text;
     }
 
-    private String converStreamToString(InputStream is)throws IOException{
-        ByteArrayOutputStream bs = new ByteArrayOutputStream();
-        int i = is.read();
-        while (i != -1){
-            bs.write(i);
-            i=is.read();
+    private String readTextFromUri(Uri uri) {
+        StringBuilder stringBuilder = new StringBuilder();
+        try (InputStream inputStream =
+                     getContentResolver().openInputStream(uri);
+             BufferedReader reader = new BufferedReader(
+                     new InputStreamReader(Objects.requireNonNull(inputStream)))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                stringBuilder.append(line);
+                stringBuilder.append("\n");
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return bs.toString();
-    }*/
+        return stringBuilder.toString();
+    }
+
 }//Novel_upload
 
