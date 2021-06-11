@@ -210,9 +210,11 @@ public class Novel_upload extends AppCompatActivity {
             //전체 URI 정보: selectedfile.to(String);
             Toast.makeText(getApplicationContext(),getFileNameFromUri(selectedfile),
                     Toast.LENGTH_LONG).show();
+            file_name.setText(getFileNameFromUri(selectedfile));
             //Log d(TAG,"SELECTED:"+selectedfile.toString());
         }
     }//onActivityResult
+
 
     //URI에서 파일명 얻기
     @RequiresApi(api = Build.VERSION_CODES.O)
