@@ -11,6 +11,7 @@ import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +46,8 @@ public class Novel_upload extends AppCompatActivity {
     private static final int FILE_SELECT_OK = 0;
     ImageButton imgBackBtn5;
     Button btnUpload;
-    TextView write_novel,file_name,upload_title, findNovelTextView, attached_file;
+    EditText write_novel;
+    TextView file_name,upload_title, findNovelTextView, attached_file;
     ArrayList<String> titleList;
     private static final int READ_REQUEST_CODE = 123;
 
@@ -63,7 +65,7 @@ public class Novel_upload extends AppCompatActivity {
 
         //TextView
         upload_title=(TextView) findViewById(R.id.upload_title);
-        write_novel=(TextView) findViewById(R.id.write_novel);
+        write_novel=(EditText) findViewById(R.id.write_novel);
         file_name=(TextView) findViewById(R.id.file_name);
         findNovelTextView=(TextView)findViewById(R.id.findNovelTextView);
         attached_file=(TextView)findViewById(R.id.attached_file);
